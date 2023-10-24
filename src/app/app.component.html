@@ -1,6 +1,11 @@
-<h1>hello world!</h1>
+<!-- <h1>hello world!</h1> -->
+<hinv-header></hinv-header>
 
-<div [ngSwitch]="role">
+
+<div #name>
+
+</div>
+<!-- <div [ngSwitch]="role">
     <div *ngSwitchCase="'user'">Welcome user</div>
 
     <div *ngSwitchCase="'admin'"><hinv-rooms></hinv-rooms></div>
@@ -9,4 +14,16 @@
         You are not authorized to view this page.
     </div>
 
-</div>
+</div> -->
+<!-- 
+<div>
+    <ng-template #user>
+
+    </ng-template>
+</div> -->
+
+<hinv-container>
+    <hinv-rooms></hinv-rooms>
+    <hinv-employee></hinv-employee>
+    <h1>this is from ng content</h1>
+</hinv-container>

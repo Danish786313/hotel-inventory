@@ -1,0 +1,29 @@
+<hinv-header></hinv-header>
+<h3>title {{title}}</h3>
+<table ngClass="table">
+    <thead>
+      <tr>
+        <td>SR</td>
+        <td>Even/odd</td>
+        <td>Room Type</td>
+        <td>Room price</td>
+        <td>Room amenities</td>
+        <td>CheckInTime</td>
+        <td>Select Room</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr 
+      [ngClass]="e ? 'even': 'odd' "
+      *ngFor="let room of rooms ; let e=even; let o=odd; let i=index">
+        <td>{{i | percent}}</td>
+        <td>{{e}}</td>
+        <td>{{room.roomType}}</td>
+        <td>{{room.price | currency : "INR"}}</td>
+        <td>{{room.amenities | titlecase}}</td>
+        <td>{{room.checkinTime | date: 'dd/mm/yyyy'}}</td>
+        <td>{{room.roomRating | number: '1.1-3' : 'en-us'}}</td>
+        <td><button class="btn btn-primary" (click)="selectRoom(room)">Select</button></td>
+      </tr>
+    </tbody>
+  </table>
