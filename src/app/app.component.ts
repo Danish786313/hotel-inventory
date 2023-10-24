@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { Room, RoomsList } from './rooms/rooms';
 
 @Component({
-  selector: 'app-root',
+  selector: 'hinv-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Y';
+  role = 'admin'
 }
