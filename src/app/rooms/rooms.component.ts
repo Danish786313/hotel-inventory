@@ -1,6 +1,7 @@
-import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, SkipSelf, DoCheck, ViewChild, AfterViewInit, AfterContentChecked, ViewChildren, QueryList } from '@angular/core';
 import { Room, RoomsList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -18,41 +19,21 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterCont
     totalRooms: 20
   }
   
+  // roomService = new RoomsService()
+  constructor(@SkipSelf() private roomService: RoomsService) {
+    this.roomsList = this.roomService.getRooms()
+  }
+
   selectedRoom!: RoomsList
 
   toggle(event: any) {
     this.disable = !this.disable
     this.title = "Danish khan"
-  }
+  } 
 
   roomsList: RoomsList[] = []
   ngOnInit(): void {
     console.log("Header Component", this.headerComponent)
-    this.roomsList = [{
-      roomType: 'Deluxe room',
-      amenities: 'Air conditioner, free wi-fi, tv kitchen etc.',
-      price: 500,
-      photos: 'https://backend.docnet.tn/upload/image/1693060693253.jpg',
-      checkinTime: new Date('11-nov-2021'),
-      checkoutTime: new Date(),
-      roomRating: 94.343,
-    },{
-      roomType: 'Deluxe room',
-      amenities: 'Air conditioner, free wi-fi, tv kitchen etc.',
-      price: 500,
-      photos: 'https://backend.docnet.tn/upload/image/1693060693253.jpg',
-      checkinTime: new Date(),
-      checkoutTime: new Date(),
-      roomRating: 14.34123,
-    },{
-      roomType: 'Deluxe room',
-      amenities: 'Air conditioner, free wi-fi, tv kitchen etc.',
-      price: 500,
-      photos: 'https://backend.docnet.tn/upload/image/1693060693253.jpg',
-      checkinTime: new Date(),
-      checkoutTime: new Date(),
-      roomRating: 34.3443433,
-    }]
   }
 
   selectRoom(event: RoomsList) {
