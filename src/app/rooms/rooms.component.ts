@@ -38,6 +38,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterCont
   constructor(@SkipSelf() private roomService: RoomsService) {
     console.log("observable", this.roomService.getRooms())
     this.subscription = this.roomService.getRooms$.subscribe(rooms => {
+      console.log("we are here", rooms)
       this.roomsList = rooms
     })
     // this.roomsList = this.roomService.getRooms()
@@ -120,6 +121,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterCont
     // this.roomsList.push(room)
     // this.roomsList = [...this.roomsList, room]
     this.roomService.addRoom(room).subscribe(data => {
+      console.log("Hackerkernel :: ", data)
       this.roomsList = data
     })
   }
