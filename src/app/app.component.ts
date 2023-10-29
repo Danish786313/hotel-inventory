@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Optional, ViewChild, View
 import { RoomsComponent } from './rooms/rooms.component';
 import { LoggerService } from './logger.service';
 import { localStorageToken } from './localStorage.token'
+import { InitService } from './init.service';
 
 @Component({
   selector: 'hinv-root',
@@ -24,6 +25,10 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
   constructor(
     @Optional() private loggerService: LoggerService, 
-    @Inject(localStorageToken) private localstorage: any
-  ) { }
+    @Inject(localStorageToken) private localstorage: any,
+    private initService: InitService
+  ) {
+    console.log("APP INITIALIZER", initService.config);
+    
+   }
 }

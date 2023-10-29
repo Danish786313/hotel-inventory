@@ -8,7 +8,7 @@ import { RoomsList } from '../rooms/rooms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsListComponent implements OnChanges {
-  @Input() rooms: RoomsList [] = []
+  @Input() rooms: RoomsList [] | null = []
   @Input() title: string = ''
   @Output() selectedRoom = new EventEmitter<RoomsList>()
   selectRoom(room : any) {

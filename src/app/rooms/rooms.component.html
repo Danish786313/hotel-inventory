@@ -15,8 +15,22 @@
 </div>
 
 <div>
+  <button (click)="editRoom()">Edit Room</button>
+</div>
+
+<div>
+  <button (click)="deleteRoom()">Delete Room</button>
+</div>
+
+<p style="color: red;"> {{ getError$ | async }}</p>
+
+<p style="color: brown;">
+  number of rooms: {{roomsCount$ | async}}
+</p>
+
+<div *ngIf="rooms$ | async as rooms ">
   <hinv-rooms-list 
-  [rooms]="roomsList"
+  [rooms]="rooms"
   (selectedRoom)="selectRoom($event)"
   [title]="title"
   ></hinv-rooms-list>
@@ -26,5 +40,7 @@
   {{selectedRoom | json}}
 </div>
 
+<h1>{{ totalBytes }} bytes loaded</h1>
+{{ rooms$ | async | json}}
 
 <hinv-employee></hinv-employee>
