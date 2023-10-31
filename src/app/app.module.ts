@@ -23,6 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
+import { FormsModule } from '@angular/forms';
+import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
+
 
 
 function initFactor(initService: InitService) {
@@ -38,7 +41,8 @@ function initFactor(initService: InitService) {
     EmployeeComponent,
     DanishComponent, 
     NotfoundComponent,
-    RoomsBookingComponent
+    RoomsBookingComponent,
+    RoomsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,8 @@ function initFactor(initService: InitService) {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,

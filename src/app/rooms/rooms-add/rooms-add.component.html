@@ -1,0 +1,49 @@
+<p>rooms-add works!</p>
+
+<div *ngIf="message !== '' " class="alert alert-success">
+    {{message}}
+</div>
+<form (ngSubmit)="addRooms(roomsForm)" #roomsForm="ngForm">
+    <p>Danish</p>
+    <div class="form-group">
+        <input class="form-group" type="text" name="roomType" placeholder="room type" [(ngModel)]="room.roomType">
+    </div>
+    <div class="form-group">
+        <input #roomsamenties="ngModel"  class="form-group" type="text" name="amenities" placeholder="amenities" [(ngModel)]="room.amenities" minlength="2" maxlength="10" required>
+        <div *ngIf="roomsamenties.errors?.['minlength']" class="alert alert-danger">
+            <!-- {{roomsamenties.errors | json}} -->
+            amenities should be min 5 chars!
+        </div>
+        <div *ngIf="roomsamenties.dirty && roomsamenties.errors?.['required']" class="alert alert-danger">
+            <!-- {{roomsamenties.errors | json}} -->
+            Please provide the amenities
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="form-group" type="number" name="price" placeholder="price" [(ngModel)]="room.price">
+    </div>
+    <div class="form-group">
+        <input class="form-group" type="text" name="photos" placeholder="photos" [(ngModel)]="room.photos">
+    </div>
+    <div class="form-group">
+        <input class="form-group"  type="datetime" name="checkinTime" placeholder="check in Time" [(ngModel)]="room.checkinTime">
+    </div>
+    <div class="form-group">
+        <input class="form-group" type="datetime" name="checkoutTime" placeholder="check out Time" [(ngModel)]="room.checkoutTime">
+    </div>
+    <div class="form-group">
+        <input class="form-group" type="number" name="roomRating" placeholder="room rating" [(ngModel)]="room.roomRating">
+    </div>
+    <div>
+        <button [disabled]="roomsForm.invalid" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{{ room | json}}
+
+{{ roomsForm.errors | json}}
+
+{{ roomsForm.valid | json}}
+{{ roomsForm.pristine | json}}
+{{ roomsForm.dirty | json}}
+{{ roomsForm.invalid | json}}
+{{ roomsForm.value | json}}
